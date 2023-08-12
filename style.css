@@ -293,3 +293,8 @@ h6 a:hover{
 input[type=radio]#Red {
   accent-color: #ef4232;
 }
+
+.result-card{
+  display: flex;
+  justify-content: center;
+}

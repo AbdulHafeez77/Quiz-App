@@ -446,19 +446,19 @@ let jsQuestion = [
         }
 ] 
 
-let quizContainer = document.getElementById('quizContainer');
+let heading = document.getElementById('heading');
 let row = document.getElementById('row');
+let quizContainer = document.getElementById('quizContainer');
 let htmlBtn = document.getElementById('htmlBtn');
 let cssBtn = document.getElementById('cssBtn');
 let jsBtn = document.getElementById('jsBtn');
-let timer = document.getElementById('timer')
+let timer = document.getElementById('timer');
 let question = document.getElementById('question');
 let option1 = document.getElementById('option1');
 let option2 = document.getElementById('option2');
 let option3 = document.getElementById('option3');
-let radioBtn = document.getElementsByName('answer');
-console.log(radioBtn)
 let nextBtn = document.getElementById('next-btn');
+let resultCard = document.getElementById('result-card');
 let currentQuiz = [];
 let indexes = 0;
 let score = 0;
@@ -486,12 +486,15 @@ jsBtn.addEventListener('click', function () {
 });
 
 function startQuiz() {
-    quizContainer.style.display = 'block';
+    heading.style.display = 'none';
     row.style.display = 'none';
     htmlBtn.style.display = 'none';
     cssBtn.style.display = 'none';
     jsBtn.style.display = 'none';
+    resultCard.style.display = 'none';
+    quizContainer.style.display = 'block';
     nextQuestion();
+    
 }
 
 function nextQuestion(){
@@ -511,19 +514,24 @@ function nextQuestion(){
     }
     if(indexes > currentQuiz.length - 1){
         let result = document.getElementById('result');
+        let resultText = document.getElementById('result-text');
         let scorePercent = `${(score / currentQuiz.length) * 100}%`;
+        quizContainer.style.display = 'none';
         timer.style.display = 'none';
+        resultCard.style.display = 'flex';
         result.style.display = 'block';
-        // nextBtn.disabled = true;
-        // radioBtn.checked = false;
         if(scorePercent  > `80%`){
-            result.innerHTML = `${scorePercent} Execllent! you pased`;
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
         }else if(scorePercent >= `60%`){
-            result.innerHTML = `${scorePercent} Well Done! you pased`;
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Well Done! You Passed. <br /> Study a little more and take the test again!`;
         }else if(scorePercent  == `100%`){
-            result.innerHTML = `${scorePercent} Execllent! you pased`;
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
         }else{
-            result.innerHTML = `${scorePercent} Sorry! you Failed`;
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Sorry! You Failed. <br /> You must study much harder!`;
         }
     }else{
         question.innerHTML = currentQuiz[indexes].question;
@@ -565,4 +573,16 @@ function resetTimer() {
 }
 
 
+function backToQuizes(){
+    resultCard.style.display = 'none';
+    heading.style.display = 'block';
+    row.style.display = 'flex';
+    htmlBtn.style.display = 'inline';
+    cssBtn.style.display = 'inline';
+    jsBtn.style.display = 'inline';
+}
 
+
+ function TryAgain(){
+   startQuiz();
+ } 

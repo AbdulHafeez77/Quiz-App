@@ -44,13 +44,13 @@
         </div>
     </nav>
 
-    <div class="mt-4 mb-5 heading">
+    <div id="heading" class="mt-4 mb-5 heading">
         <h3>Choose Your Quiz</h3>
     </div>
 
     <div class="container-xxl">
         <div id="row" class="row mt-5 mb-5 justify-content-center">
-            <div class="col col-12 col-sm-12 col-md-6 col-lg-3 mt-4 mb-4">
+            <div class="col col-12 col-sm-12 col-md-6 col-lg-3 mt-3 mb-4">
                 <div class="card w-70">
                     <div class="card-body">
                       <h5 class="card-title">HTML</h5>
@@ -90,7 +90,7 @@
             </div>
         </div>
          
-        <div style="display: none;" id="quizContainer" class="quiz-container mb-5">
+        <div style="display: none;" id="quizContainer" class="quiz-container mt-5 mb-5">
             <div class="card text-center">
                 <div class="card-header question">
                   <h5 id="question"></h5>
@@ -120,8 +120,17 @@
                 <div style="display: none;" id="timer" class="card-footer text-body-secondary"> </div>
             </div>
         </div>
-
-       <div style="display: none;" class="result" id="result"></div> 
+               
+        <div style="display: none;" id="result-card" class="result-card">
+             <div class="card w-75 mb-5 mt-5">
+                <div class="card-body">
+                    <h4 class="card-title"> RESULT :</h4>
+                    <h5 id="result" class="card-title"> </h5>
+                    <p id="result-text" class="card-text"> </p>
+                    <a href="#" class="btn my-btn" onclick="backToQuizes()">Try Again</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
