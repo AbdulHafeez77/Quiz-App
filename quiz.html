@@ -39,6 +39,7 @@
                 <div>
                     <a class="btn my-btn2" id="logout-btn" href="index.html">Log out</a>
                     <a class="btn my-btn2" href="signup.html">Sign Up</a>
+                    <img id="userPhoto" class="user-photo" width="40" height="40" src="images/user-fotor-20230719142435-fotor-20230719142859.png" alt="">
                 </div>
             </div>
         </div>
@@ -98,19 +99,19 @@
                 <div class="card-body">
                    <div>
                         <label class="card-text options">
-                           <input id="Red" onclick="enableBtn()" value="1" type="radio" name="answer">
+                           <input id="Red" onclick="enableBtn()" value="1" type="radio" name="answer" />
                             <span id="option1"> </span>
                         </label>
                     </div> 
                     <div>
                         <label class="card-text options">
-                            <input id="Red" onclick="enableBtn()" value="2" type="radio" name="answer">
+                            <input id="Red" onclick="enableBtn()" value="2" type="radio" name="answer" />
                             <span id="option2"> </span>
                         </label>
                     </div>
                     <div>
                         <label  class="card-text options">
-                            <input id="Red" onclick="enableBtn()" value="3" type="radio" name="answer">
+                            <input id="Red" onclick="enableBtn()" value="3" type="radio" name="answer" />
                             <span id="option3"> </span>
                         </label>
                     </div> 
@@ -127,7 +128,8 @@
                     <h4 class="card-title"> RESULT :</h4>
                     <h5 id="result" class="card-title"> </h5>
                     <p id="result-text" class="card-text"> </p>
-                    <a href="#" class="btn my-btn" onclick="backToQuizes()">Try Again</a>
+                    <a href="#" class="btn my-btn mb-2" id="tryAgain">Try Again</a>
+                    <a href="#" class="btn my-btn" id="back">Back to Quizes</a>
                 </div>
             </div>
         </div>

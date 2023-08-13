@@ -463,39 +463,66 @@ let currentQuiz = [];
 let indexes = 0;
 let score = 0;
 
-htmlBtn.addEventListener('click', function () {
+htmlBtn && htmlBtn.addEventListener('click', function (event) {
+    event.preventDefault();
     currentQuiz = htmlQuestion;
     startQuiz();
-    quizContainer.style.display = 'block';
     timer.style.display = 'inline-block';
 });
 
-cssBtn.addEventListener('click', function () {
+cssBtn && cssBtn.addEventListener('click', function (event) {
+    event.preventDefault();
     currentQuiz = cssQuestion;
     startQuiz();
-    quizContainer.style.display = 'block';
     timer.style.display = 'inline-block';
 });
 
 
-jsBtn.addEventListener('click', function () {
+jsBtn && jsBtn.addEventListener('click', function (event) {
+    event.preventDefault();
     currentQuiz = jsQuestion;
     startQuiz();
-    quizContainer.style.display = 'block';
     timer.style.display = 'inline-block';
 });
 
 function startQuiz() {
+    resultCard.style.display = 'none'; 
     heading.style.display = 'none';
     row.style.display = 'none';
     htmlBtn.style.display = 'none';
     cssBtn.style.display = 'none';
     jsBtn.style.display = 'none';
-    resultCard.style.display = 'none';
     quizContainer.style.display = 'block';
-    nextQuestion();
-    
+    nextQuestion();    
 }
+
+
+function reStartQuiz(){
+    resultCard.style.display = 'none'; 
+    heading.style.display = 'block';
+    row.style.display = 'flex';
+    htmlBtn.style.display = 'inline';
+    cssBtn.style.display = 'inline';
+    jsBtn.style.display = 'inline';
+    console.log("Try Again button clicked");
+    indexes = 0;
+    score = 0;
+    startQuiz();
+}
+
+function backToQuizes(){
+    resultCard.style.display = 'none'; 
+    heading.style.display = 'block';
+    row.style.display = 'flex';
+    htmlBtn.style.display = 'inline';
+    cssBtn.style.display = 'inline';
+    jsBtn.style.display = 'inline';
+    console.log("Try Again button clicked");
+    indexes = 0;
+    score = 0;
+    nextQuestion();
+}
+
 
 function nextQuestion(){
     resetTimer();
@@ -513,26 +540,7 @@ function nextQuestion(){
         nextBtn.disabled = true;
     }
     if(indexes > currentQuiz.length - 1){
-        let result = document.getElementById('result');
-        let resultText = document.getElementById('result-text');
-        let scorePercent = `${(score / currentQuiz.length) * 100}%`;
-        quizContainer.style.display = 'none';
-        timer.style.display = 'none';
-        resultCard.style.display = 'flex';
-        result.style.display = 'block';
-        if(scorePercent  > `80%`){
-            result.innerHTML = scorePercent;
-            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
-        }else if(scorePercent >= `60%`){
-            result.innerHTML = scorePercent;
-            resultText.innerHTML = `Well Done! You Passed. <br /> Study a little more and take the test again!`;
-        }else if(scorePercent  == `100%`){
-            result.innerHTML = scorePercent;
-            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
-        }else{
-            result.innerHTML = scorePercent;
-            resultText.innerHTML = `Sorry! You Failed. <br /> You must study much harder!`;
-        }
+        showResult();
     }else{
         question.innerHTML = currentQuiz[indexes].question;
         option1.innerText = currentQuiz[indexes].option1;
@@ -541,6 +549,11 @@ function nextQuestion(){
         indexes++;
     }
 }
+
+nextBtn && nextBtn.addEventListener('click', function () { 
+    nextQuestion();
+});
+
 
 function enableBtn(){ 
    nextBtn.disabled = false; 
@@ -572,17 +585,38 @@ function resetTimer() {
     startTimer();
 }
 
+function showResult(){
+    let result = document.getElementById('result');
+        let resultText = document.getElementById('result-text');
+        let scorePercent = `${(score / currentQuiz.length) * 100}%`;
+        quizContainer.style.display = 'none';
+        timer.style.display = 'none';
+        resultCard.style.display = 'flex';
+        result.style.display = 'block';
+        if(scorePercent  > `80%`){
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
+        }else if(scorePercent >= `60%`){
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Well Done! You Passed. <br /> Study a little more and take the test again!`;
+        }else if(scorePercent  == `100%`){
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Execllent! You Passed. <br /> You can be proud of yourself!`;
+        }else{
+            result.innerHTML = scorePercent;
+            resultText.innerHTML = `Sorry! You Failed. <br /> You must study much harder!`;
+    }
+    let tryAgainBtn = document.getElementById('tryAgain');
+    tryAgainBtn.addEventListener('click', function () {
+        resultCard.style.display = 'none';
+        reStartQuiz();
+    });
 
-function backToQuizes(){
-    resultCard.style.display = 'none';
-    heading.style.display = 'block';
-    row.style.display = 'flex';
-    htmlBtn.style.display = 'inline';
-    cssBtn.style.display = 'inline';
-    jsBtn.style.display = 'inline';
+    let back = document.getElementById('back');
+    back.addEventListener('click', function(){
+        backToQuizes();
+    })
 }
 
 
- function TryAgain(){
-   startQuiz();
- } 
+

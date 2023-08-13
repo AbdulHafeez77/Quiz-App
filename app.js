@@ -19,7 +19,6 @@ const storage = getStorage();
 const userProfile = document.getElementById('user-profile');
 
 
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
     let uid = localStorage.getItem('uid')
@@ -134,18 +133,18 @@ const getUserData = async (uid) => {
   if (docSnap.exists()) {  
   let fullName = document.getElementById('signup-name');
   let signupEmail = document.getElementById('signup-email');
-  let userName = document.getElementById('userName');
-  let userEmail = document.getElementById('userEmail');
+  let userPhoto = document.getElementById('userPhoto')
   if(location.pathname === '/profile.html' ){
     fullName.value = docSnap.data().fullName;
     signupEmail.value = docSnap.data().signupEmail;
     if(docSnap.data().picture){
-       userProfile.src = docSnap.data().picture;  
+       userProfile.src = docSnap.data().picture; 
+       userPhoto.src = docSnap.data().picture; 
     }
   } else{
-      userName.innerHTML += docSnap.data().fullName;
-      userEmail.innerHTML = docSnap.data().signupEmail;
-
+    if (docSnap.data().picture) {
+      userPhoto.src = docSnap.data().picture; 
+    } 
   }  
   } else {
     console.log("No such document!");
@@ -205,7 +204,7 @@ updateProfileBtn && updateProfileBtn.addEventListener('click', async () => {
     await updateDoc(userRef, {
       fullName: fullName.value,
       signupEmail: signupEmail.value,
-      picture: imageURl 
+      picture: imageURl,
     });
     Swal.fire({
       icon: 'success!',
@@ -215,8 +214,6 @@ updateProfileBtn && updateProfileBtn.addEventListener('click', async () => {
     console.log("Document does not exist!");
   }
 })
-
-
 
 
 

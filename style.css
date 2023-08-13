@@ -10,6 +10,11 @@
  font-family: "my-font";
 }
 
+a{
+  text-decoration: none !important;
+}
+
+
 .logo{
   border-radius: 50%;
 }
@@ -17,8 +22,8 @@
 
 .my-nav{
   font-size: 20px !important;
-  width: 134px;
-  text-align: center;
+  width: 134px !important;
+  text-align: center !important;
 }
 
 .card {
@@ -115,18 +120,18 @@
   font-weight: bold;
 }
 
-h6{
+.form p{
   margin-top: 15px !important;
   text-align: center !important;
 }
 
-h6 a{
+.form a{
   color: #000;
   text-decoration: none;
   font-weight: bold;
 }
 
-h6 a:hover{
+.form a:hover{
   color: #ef4232;
   font-weight: bolder;
 }
@@ -173,10 +178,11 @@ h6 a:hover{
 }
 
 .copyright {
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  text-align: center;
-  padding: 10px;
+  background-color: #fff !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px !important;
+  text-align: center !important;
+  padding: 10px !important;
+  color: #000 !important;
 }
 
 
@@ -259,7 +265,6 @@ h6 a:hover{
   background-color: #e0e0e0;
   padding: 10px;
   text-align: center;
-  /* border: 1px solid #d2232a; */
 }
 
 .quiz-container{
@@ -297,4 +302,11 @@ input[type=radio]#Red {
 .result-card{
   display: flex;
   justify-content: center;
+}
+
+
+.user-photo{
+  border-radius: 50%;
+  margin-left: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
 }
